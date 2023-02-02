@@ -5,7 +5,6 @@ use std::path::Path;
 use argh::FromArgs;
 use color_eyre::eyre::Result;
 
-
 #[derive(FromArgs)]
 #[argh(description = r#"
 A simple grep alternative written in Rust.
@@ -19,7 +18,6 @@ struct Args {
 
     #[argh(positional)]
     path: String,
-
 }
 
 fn main() -> Result<()> {
@@ -54,7 +52,7 @@ fn grep(pattern: &str, path: &Path) -> Result<(), io::Error> {
         let line = line?;
         if line.contains(pattern) {
             println!("{}:{}", path.display(), line_number + 1);
-            println!("{}", line);
+            println!("{line}");
         }
     }
 
